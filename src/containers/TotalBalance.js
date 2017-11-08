@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
-// import { InvestmentStore } from './../stores';
+import { BalanceStore } from './../stores';
 
 class TotalBalance extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      totalBalance: 100
+      totalBalance: BalanceStore.get()
     }
+  }
+
+  componentWillMount() {
+    this.balanceSubscription = BalanceStore.addOnChange(() => {
+      console.log('balance change', BalanceStore.get())
+      this.setState({
+        totalBalance: BalanceStore.get()
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.balanceSubscription.remove();
   }
 
   render() {
@@ -19,4 +32,4 @@ class TotalBalance extends Component {
   }
 }
 
-export default Investments;
+export default TotalBalance;

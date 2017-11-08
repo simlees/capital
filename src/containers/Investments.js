@@ -15,8 +15,8 @@ class Investments extends Component {
     this.investmentsSubscription = InvestmentStore.addOnChange(() => {
       this.setState({
         investments: InvestmentStore.get()
-      })
-    })
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -26,10 +26,9 @@ class Investments extends Component {
   render() {
     return (
       <div className="investments">
-        Here are my wonderful investments
         {this.state.investments.map(investment =>
           <Investment
-            key={investment.code}
+            key={investment.id}
             {...investment}/>
         )}
       </div>

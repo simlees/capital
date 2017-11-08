@@ -7,14 +7,19 @@ const investments = investmentTypes.map(investmentType => {
     ...investmentType,
     quantity: 0
   }
-})
+});
+
+function purchaseInvestment(id, quantity) {
+  let type = investments.find(i => i.id === id);
+  type.quantity += quantity;
+}
 
 const InvestmentStore = GeneralStore.define()
   .defineGet(function() {
     return investments;
   })
-  .defineResponseTo('PURCHASE_INVESTMENT', function(investment) {
-    console.log('purchasing...');
+  .defineResponseTo('PURCHASE_INVESTMENT', function(data) {
+    purchaseInvestment(data.id, data.quantity);
     // buy it! investment.id investment.quantity
   })
   .register(dispatcher);

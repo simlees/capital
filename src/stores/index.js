@@ -1,3 +1,7 @@
 import InvestmentStore from './investmentStore';
+import BalanceStore from './balanceStore';
 
-export { InvestmentStore };
+export {
+  InvestmentStore,
+  BalanceStore
+};

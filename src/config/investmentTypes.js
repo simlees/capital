@@ -1,12 +1,12 @@
 const investmentTypes = [
   {
-    code: 'COOK',
+    id: 'COOK',
     name: 'Cookie Stall',
     price: 10,
     profit: 1,
   },
   {
-    code: 'PIES',
+    id: 'PIES',
     name: 'Pie Shop',
     price: 300000,
     profit: 2,
