@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { InvestmentStore } from './../stores';
 import { Currency } from './Currency';
 import { purchaseInvestment, collectProfit } from './../actions/investmentActions'
+import PurchaseProgress from './PurchaseProgress';
 
 class Investment extends Component {
 
@@ -15,6 +16,7 @@ class Investment extends Component {
         <button onClick={() => purchaseInvestment(this.props.id, this.props.price) }>
           Buy (<Currency amount={this.props.price}/>)
         </button>
+        <PurchaseProgress timeToComplete={this.props.purchaseTime}/>
       </div>
     );
   }
